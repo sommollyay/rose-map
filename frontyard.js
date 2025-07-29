@@ -80,10 +80,20 @@ roseBushes.forEach(function(bush) {
 
   var marker = L.marker([bush.y, bush.x], {icon: icon}).addTo(map);
 
+  //marker.bindPopup(
+    //'<h3>' + bush.type + '</h3><img src="' + bush.image + '" class="popup" style="width:260px;max-width:90vw;max-height:70vh;object-fit:contain;">',
+    //{ maxWidth: 470, maxHeight: 400 }
+  //);
   marker.bindPopup(
-    '<h3>' + bush.type + '</h3><img src="' + bush.image + '" class="popup" style="width:260px;max-width:90vw;max-height:70vh;object-fit:contain;">',
-    { maxWidth: 470, maxHeight: 400 }
-  );
+  '<h3>' + bush.type + '</h3><img src="' + bush.image + '" class="popup" style="width:260px;max-width:90vw;max-height:70vh;object-fit:contain;">',
+  { 
+    maxWidth: 410, 
+    maxHeight: 350,
+    autoPan: true,
+    autoPanPadding: [70, 70], // increased padding to help keep popup in view
+    keepInView: true // Leaflet 1.9+ only
+  }
+);
 });
 
 
