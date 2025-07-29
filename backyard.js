@@ -26,7 +26,13 @@ var roseBushes = [
 ];
 
 roseBushes.forEach(function(bush) {
-  var marker = L.marker([bush.y, bush.x]).addTo(map);
+  var icon = blueIcon; // Default icon
+  // when image does not exist, show red icon
+  if (!imageExists(bush.image)) {
+    icon = redIcon;
+  }
+
+  var marker = L.marker([bush.y, bush.x], {icon: icon}).addTo(map);
   marker.bindPopup(
     '<h3>' + bush.type + '</h3><img src="' + bush.image + '" class="popup" style="width:260px;max-width:90vw;max-height:70vh;object-fit:contain;">',
     { maxWidth: 470, maxHeight: 400 }
@@ -35,13 +41,7 @@ roseBushes.forEach(function(bush) {
 
 
 // WB: BEG Adding a temporary draggable marker for ease of finding coordinates
-var icon = L.icon({
-  iconUrl: 'draggable-marker-icon.png',
-  iconSize: [25, 41], // size of the icon
-  iconAnchor: [12.5, 41], // point of the icon which will correspond to marker's location
-  popupAnchor: [0, -41] // point from which the popup should open relative to the iconAnchor
-});
-var tempMarker = L.marker([40, 100], {draggable: true, icon: icon}).addTo(map);
+var tempMarker = L.marker([40, 100], {draggable: true, icon: draggableIcon}).addTo(map);
 tempMarker.bindPopup('Drag me! :D');
 tempMarker.on('dragend', function(e) {
   // This is logged to the console so you can see the coordinates of the marker after dragging
