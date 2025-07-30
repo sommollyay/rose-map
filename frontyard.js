@@ -107,12 +107,12 @@ roseBushes.forEach(function(bush) {
 
 
 // WB: BEG Adding a temporary draggable marker for ease of finding coordinates
-var tempMarker = L.marker([40, 100], {draggable: true, icon: draggableIcon}).addTo(map);
-tempMarker.bindPopup('Drag me! :D');
-tempMarker.on('dragend', function(e) {
-  // This is logged to the console so you can see the coordinates of the marker after dragging
-    console.log('Marker dragged to: ' + e.target.getLatLng());
-});
+// var tempMarker = L.marker([40, 100], {draggable: true, icon: draggableIcon}).addTo(map);
+// tempMarker.bindPopup('Drag me! :D');
+// tempMarker.on('dragend', function(e) {
+//   // This is logged to the console so you can see the coordinates of the marker after dragging
+//     console.log('Marker dragged to: ' + e.target.getLatLng());
+// });
 // WB: END temporary draggable marker
 
 
